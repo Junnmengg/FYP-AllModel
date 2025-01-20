@@ -510,6 +510,7 @@ elif st.session_state["page"] == "Excel File Prediction":
         else:
             # Perform MWE detection on each sentence
             detected_mwes = []
+            predicted_labels = []
             
             # Perform MWE detection for each sentence in the uploaded Excel file
             for sentence in df["Sentence"]:
@@ -526,8 +527,17 @@ elif st.session_state["page"] == "Excel File Prediction":
                 else:
                     detected_mwes.append(", ".join(mwes))  # Multiple MWEs -> Comma-separated
 
-            # Add Detected MWEs column to the DataFrame
+                # Extract token-level predictions and join them with commas
+                labels = [entry["Prediction"] for entry in table_data]
+                predicted_labels.append(", ".join(labels))
+
+            # Add Predicted Labels and Detected MWEs columns to the DataFrame
+            df["Predicted Labels"] = predicted_labels
             df["Detected MWEs"] = detected_mwes
+
+            # Reorder columns to place Predicted Labels before Detected MWEs
+            column_order = ["Sentence", "Predicted Labels", "Detected MWEs"]
+            df = df[column_order]
 
             # Display the updated DataFrame
             st.markdown('<h3 style="color:skyblue;">Updated Excel File</h3>', unsafe_allow_html=True)

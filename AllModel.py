@@ -13,7 +13,11 @@ import openpyxl
 import xlsxwriter
 import os
 
-Username1 = os.getenv()
+Username1 = os.getenv('USERNAME1')
+Username2 = os.getenv('USERNAME2')
+Username3 = os.getenv('USERNAME3')
+Username4 = os.getenv('USERNAME4')
+Token = os.getenv('TOKEN')
 
 # Download tokenizer data
 nltk.download('punkt_tab')
@@ -133,7 +137,7 @@ def load_model_and_tokenizer(model_name, repo_id, token, filename, lstm_vocab=No
         )
         # Download weights
         model_weights_path = hf_hub_download(
-            repo_id="Junmengg/FYP-LSTM-CRF", 
+            repo_id=Username4, 
             filename=filename, 
             use_auth_token=token
         )
@@ -343,17 +347,17 @@ if st.session_state["page"] == "Sentence Prediction":
     if selected_model == "BERT":
         with st.spinner("Loading BERT model..."):
             model, tokenizer = load_model_and_tokenizer(
-                "BERT", "Junmengg/FYP-BERT", "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", "bert_model_weights.pth"
+                "BERT", Username1, Token, "bert_model_weights.pth"
             )
     elif selected_model == "BERT-CRF":
         with st.spinner("Loading BERT-CRF model..."):
             model, tokenizer = load_model_and_tokenizer(
-                "BERT-CRF", "Junmengg/FYP-BERT-CRF", "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", "bert_crf_model_weights.pth"
+                "BERT-CRF", Username2, Token, "bert_crf_model_weights.pth"
             )
     elif selected_model == "RoBERTa-CRF":
         with st.spinner("Loading RoBERTa-CRF model..."):
             model, tokenizer = load_model_and_tokenizer(
-                "RoBERTa-CRF", "Junmengg/FYP-RoBERTa-CRF", "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", "roberta_crf_model_weights.pth"
+                "RoBERTa-CRF", Username3, Token, "roberta_crf_model_weights.pth"
             )
     elif selected_model == "LSTM-CRF":
         with st.spinner("Loading LSTM-CRF model..."):
@@ -364,7 +368,7 @@ if st.session_state["page"] == "Sentence Prediction":
 
             pad_idx = vocab["<PAD>"]  # Ensure <PAD> token exists in vocab
             model, tokenizer, vocab = load_model_and_tokenizer(
-                "LSTM-CRF", None, "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", "lstm_crf_model_weights.pth", lstm_vocab=vocab, pad_idx=pad_idx
+                "LSTM-CRF", None, Token, "lstm_crf_model_weights.pth", lstm_vocab=vocab, pad_idx=pad_idx
             )
 
     # Define test set performance metrics for each model
@@ -469,28 +473,28 @@ elif st.session_state["page"] == "Excel File Prediction":
     if selected_model == "BERT":
         with st.spinner("Loading BERT model..."):
             model, tokenizer = load_model_and_tokenizer(
-                "BERT", "Junmengg/FYP-BERT", "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", "bert_model_weights.pth"
+                "BERT", Username1, Token, "bert_model_weights.pth"
             )
     elif selected_model == "BERT-CRF":
         with st.spinner("Loading BERT-CRF model..."):
             model, tokenizer = load_model_and_tokenizer(
-                "BERT-CRF", "Junmengg/FYP-BERT-CRF", "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", "bert_crf_model_weights.pth"
+                "BERT-CRF", Username2, Token, "bert_crf_model_weights.pth"
             )
     elif selected_model == "RoBERTa-CRF":
         with st.spinner("Loading RoBERTa-CRF model..."):
             model, tokenizer = load_model_and_tokenizer(
-                "RoBERTa-CRF", "Junmengg/FYP-RoBERTa-CRF", "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", "roberta_crf_model_weights.pth"
+                "RoBERTa-CRF", Username3, Token, "roberta_crf_model_weights.pth"
             )
     elif selected_model == "LSTM-CRF":
         with st.spinner("Loading LSTM-CRF model..."):
             vocab_path = hf_hub_download(
-                repo_id="Junmengg/FYP-LSTM-CRF", filename="lstm_crf_vocab.json", use_auth_token="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"
+                repo_id=Username4, filename="lstm_crf_vocab.json", use_auth_token=Token
             )
             with open(vocab_path, "r") as f:
                 vocab = json.load(f)
             pad_idx = vocab["<PAD>"]
             model, tokenizer, vocab = load_model_and_tokenizer(
-                "LSTM-CRF", None, "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", "lstm_crf_model_weights.pth", lstm_vocab=vocab, pad_idx=pad_idx
+                "LSTM-CRF", None, Token, "lstm_crf_model_weights.pth", lstm_vocab=vocab, pad_idx=pad_idx
             )
 
     # Upload excel file

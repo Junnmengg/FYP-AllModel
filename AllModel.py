@@ -13,11 +13,11 @@ import openpyxl
 import xlsxwriter
 import os
 
-Username1 = os.getenv('USERNAME1')
-Username2 = os.getenv('USERNAME2')
-Username3 = os.getenv('USERNAME3')
-Username4 = os.getenv('USERNAME4')
-Token = os.getenv('TOKEN')
+Username1 = st.secrets["USERNAME1"]
+Username2 = st.secrets["USERNAME2"]
+Username3 = st.secrets["USERNAME3"]
+Username4 = st.secrets["USERNAME4"]
+Token = st.secrets["TOKEN"]
 
 # Download tokenizer data
 nltk.download('punkt_tab')
@@ -139,7 +139,7 @@ def load_model_and_tokenizer(model_name, repo_id, token, filename, lstm_vocab=No
         model_weights_path = hf_hub_download(
             repo_id=Username4, 
             filename=filename, 
-            use_auth_token=token
+            token=token
         )
         state_dict = torch.load(model_weights_path, map_location=torch.device('cpu'))
 
@@ -161,7 +161,7 @@ def load_model_and_tokenizer(model_name, repo_id, token, filename, lstm_vocab=No
 
     elif model_name == "BERT":
         # BERT Model
-        tokenizer = AutoTokenizer.from_pretrained(repo_id, use_auth_token=token)
+        tokenizer = AutoTokenizer.from_pretrained(repo_id, token=token)
         model = BertModel('bert-base-uncased', num_labels_mwe=len(mwe_label_to_id))
     elif model_name == "BERT-CRF" or model_name == "RoBERTa-CRF":
         # CRF-enhanced models (BERT-CRF or RoBERTa-CRF)
@@ -174,7 +174,7 @@ def load_model_and_tokenizer(model_name, repo_id, token, filename, lstm_vocab=No
         raise ValueError("Unsupported model name!")
 
     # Load model weights
-    model_weights_path = hf_hub_download(repo_id=repo_id, filename=filename, use_auth_token=token)
+    model_weights_path = hf_hub_download(repo_id=repo_id, filename=filename, token=token)
     model.load_state_dict(torch.load(model_weights_path, map_location=torch.device('cpu')))
     model.eval()
 
@@ -362,7 +362,7 @@ if st.session_state["page"] == "Sentence Prediction":
     elif selected_model == "LSTM-CRF":
         with st.spinner("Loading LSTM-CRF model..."):
             # Download the vocabulary file from Hugging Face
-            vocab_path = hf_hub_download(repo_id="Junmengg/FYP-LSTM-CRF", filename="lstm_crf_vocab.json", use_auth_token="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")
+            vocab_path = hf_hub_download(repo_id="Junmengg/FYP-LSTM-CRF", filename="lstm_crf_vocab.json", token=Token)
             with open(vocab_path, "r") as f:
                 vocab = json.load(f)
 

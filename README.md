@@ -39,9 +39,7 @@ The code is organized using a clean, modular architecture:
 
 ## 👨‍💻 Author
 
-* **Wong Jun Meng**
-* GitHub: [@junnmengg](https://github.com/junnmengg)
-* Live Application: [Streamlit Cloud Deployment](https://fyp-mwedetection.streamlit.app/)
+* **Wong Jun Meng** - [LinkedIn](https://linkedin.com/in/junnmengg) | [GitHub](https://github.com/junnmengg)
 
 ## 📜 License
 

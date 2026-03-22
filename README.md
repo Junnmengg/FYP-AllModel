@@ -23,11 +23,3 @@ The models were fine-tuned to classify tokens into `B-MWE`, `I-MWE`, and `O` tag
 | **BERT-CRF** | 84.99% | 0.53 |
 | **RoBERTa-CRF** | 88.71% | 0.66 |
 | **LSTM-CRF** | 85.77% | 0.49 |
-
-## 🛠️ Installation & Setup (Local)
-To run this application locally, follow these steps:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/FYP-AllModel.git
-   cd FYP-AllModel

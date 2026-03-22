@@ -27,7 +27,6 @@ jobs:
             const page = await browser.newPage();
             try {
               console.log('Visiting the app...');
-              // REPLACE THIS WITH YOUR ACTUAL STREAMLIT APP URL
               await page.goto('https://fyp-mwedetection.streamlit.app/', { waitUntil: 'networkidle2', timeout: 60000 });
               console.log('Successfully visited to keep awake!');
             } catch (err) {

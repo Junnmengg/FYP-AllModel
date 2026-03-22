@@ -1,0 +1,16 @@
+# Python bytecode (compiled files)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Streamlit secrets 
+.streamlit/secrets.toml
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# OS generated files
+.DS_Store
+Thumbs.db

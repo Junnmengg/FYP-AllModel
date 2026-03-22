@@ -28,13 +28,17 @@ The models were fine-tuned to classify tokens into `B-MWE`, `I-MWE`, and `O` tag
 The code is organized using a clean, modular architecture:
 
 ```text
-├── app.py               # Main Streamlit UI and page navigation
-├── models.py            # PyTorch Neural Network architectures (BERT, RoBERTa, LSTM, CRF)
-├── utils.py             # Helper functions (model loading, tokenization, extraction logic)
-├── requirements.txt     # Python package dependencies
-├── README.md            # Project documentation
-└── .github/workflows/
-    └── keep-awake.yml   # Automated GitHub Action to prevent Streamlit from sleeping
+├── .github/workflows/
+│   └── keep-awake.yml       # Automated GitHub Action to prevent Streamlit from sleeping
+├── .streamlit/
+│   └── secrets.toml.example # Template for local environment variables/secrets
+├── .gitignore               # Specifies files for Git to ignore (secrets, venv, pycache)
+├── LICENSE                  # MIT License details
+├── README.md                # Project documentation
+├── app.py                   # Main Streamlit UI and page navigation
+├── models.py                # PyTorch architectures (BERT, RoBERTa, LSTM, CRF)
+├── requirements.txt         # Python package dependencies
+├── utils.py                 # Helper functions (model loading, tokenization, extraction)
 ```
 
 ## 👨‍💻 Author

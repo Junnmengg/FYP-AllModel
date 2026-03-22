@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install Puppeteer (Headless Browser)
         run: npm i puppeteer
@@ -23,7 +23,7 @@ jobs:
           node -e "
           const puppeteer = require('puppeteer');
           (async () => {
-            const browser = await puppeteer.launch({ headless: 'new' });
+            const browser = await puppeteer.launch({ args:['--no-sandbox', '--disable-setuid-sandbox'] });
             const page = await browser.newPage();
             try {
               console.log('Visiting the app...');

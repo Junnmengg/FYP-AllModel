@@ -23,3 +23,24 @@ The models were fine-tuned to classify tokens into `B-MWE`, `I-MWE`, and `O` tag
 | **BERT-CRF** | 84.99% | 0.53 |
 | **RoBERTa-CRF** | 88.71% | 0.66 |
 | **LSTM-CRF** | 85.77% | 0.49 |
+
+## 📁 Project Structure
+The code is organized using a clean, modular architecture:
+
+├── app.py               # Main Streamlit UI and page navigation
+├── models.py            # PyTorch Neural Network architectures (BERT, RoBERTa, LSTM, CRF)
+├── utils.py             # Helper functions (model loading, tokenization, extraction logic)
+├── requirements.txt     # Python package dependencies
+├── README.md            # Project documentation
+└── .github/workflows/
+    └── keep-awake.yml   # Automated GitHub Action to prevent Streamlit from sleeping
+
+## 👨‍💻 Author
+
+* **Wong Jun Meng**
+* GitHub: [@junnmengg](https://github.com/junnmengg)
+* Live Application: [Streamlit Cloud Deployment](https://fyp-mwedetection.streamlit.app/)
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).

@@ -27,6 +27,7 @@ The models were fine-tuned to classify tokens into `B-MWE`, `I-MWE`, and `O` tag
 ## 📁 Project Structure
 The code is organized using a clean, modular architecture:
 
+```text
 ├── app.py               # Main Streamlit UI and page navigation
 ├── models.py            # PyTorch Neural Network architectures (BERT, RoBERTa, LSTM, CRF)
 ├── utils.py             # Helper functions (model loading, tokenization, extraction logic)

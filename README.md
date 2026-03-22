@@ -35,6 +35,7 @@ The code is organized using a clean, modular architecture:
 ├── README.md            # Project documentation
 └── .github/workflows/
     └── keep-awake.yml   # Automated GitHub Action to prevent Streamlit from sleeping
+```
 
 ## 👨‍💻 Author
 
